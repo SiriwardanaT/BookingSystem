@@ -19,5 +19,8 @@ namespace TransportManagmentSystemAPI.Models
         public bool AccStatus { get; set; }
         public DateTime CreatedDate { get; set; }
 
+        [BsonIgnore]
+        public User UserInfo { get; set; }
+
     }
 }

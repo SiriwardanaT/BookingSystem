@@ -36,16 +36,25 @@ namespace TransportManagmentSystemAPI.Controllers
 
         // GET api/<TravelerProfileController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult Get(string id)
         {
-            return "value";
+            var profile = travallerProfileService.GetTravallerProfileByNic(id);
+            if (profile != null)
+            {
+                return Ok(profile);
+            }
+            else 
+            {
+                return NotFound();
+            }
+                
         }
 
         // POST api/<TravelerProfileController>
         [HttpPost]
         public ActionResult Post(TravallerProfile _travallerProfile)
         {
-           var createdAccount = travallerProfileService.CreateTravellerProfile(_travallerProfile);
+           var createdAccount = travallerProfileService.CreateUpdateTravellerProfile(_travallerProfile);
             if (createdAccount != null)
             {
                 return Ok(createdAccount);
@@ -61,7 +70,7 @@ namespace TransportManagmentSystemAPI.Controllers
         public ActionResult Put(string id, TravallerProfile _travallerProfile)
         {
             
-            var updatedAccount = travallerProfileService.UpdateTravellerProfile(id, _travallerProfile);
+            var updatedAccount = travallerProfileService.ManageActivationTravellerProfile(id, _travallerProfile);
             if (updatedAccount != null)
             {
                 return Ok(updatedAccount);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TransportManagmentSystemAPI.DBconfig;
 using TransportManagmentSystemAPI.Interfaces;
 using TransportManagmentSystemAPI.Models;
-
+//Core Service -02 - Train Service managment 
 namespace TransportManagmentSystemAPI.Services
 {
     public class TrainScheduleManagementService : ITrainService
@@ -63,9 +63,9 @@ namespace TransportManagmentSystemAPI.Services
            return _trainList.Find(tra => tra.IsActive).ToList();
         }
 
-        public string cancellingTrain(Train train)
+        public string cancellingTrain(string id , Train train)
         {
-            var trinReservationCount = _reservationList.Find(res => res.Id == train.Id).ToList().Count;
+            var trinReservationCount = _reservationList.Find(res => res.Train == id).ToList().Count;
             if (trinReservationCount > 0)
             {
                 return "Already Reserved train";

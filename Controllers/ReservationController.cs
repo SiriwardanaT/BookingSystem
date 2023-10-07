@@ -77,8 +77,17 @@ namespace TransportManagmentSystemAPI.Controllers
 
         // PUT api/<ReservationController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult Put(string id, Reservation reservation)
         {
+            var resrvation = _reservationService.CancelledReservation(id,reservation);
+            if (resrvation.ContainsKey(100))
+            {
+                return Ok(resrvation[100]);
+            }
+            else 
+            {
+                return BadRequest(resrvation[500]);
+            }
         }
 
         // DELETE api/<ReservationController>/5

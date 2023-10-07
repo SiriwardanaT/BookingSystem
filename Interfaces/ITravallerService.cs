@@ -10,10 +10,10 @@ namespace TransportManagmentSystemAPI.Services
 {
     interface ITravallerService
     {
-        TravallerProfile CreateTravellerProfile(TravallerProfile travallerProfile);
+        TravallerProfile CreateUpdateTravellerProfile(TravallerProfile travallerProfile);
         List<TravallerProfile> DisplayAllActiveProfile(bool isActive);
-        TravallerProfile UpdateTravellerProfile(string id , TravallerProfile travallerProfile);
         String DeletedTravellerProfile(String _Nic);
-        TravallerProfile ManageActivationTravellerProfile(TravallerProfile travallerProfile);
+        TravallerProfile ManageActivationTravellerProfile(string nic ,TravallerProfile travallerProfile);
+        TravallerProfile GetTravallerProfileByNic(string _Nic);
     }
 }

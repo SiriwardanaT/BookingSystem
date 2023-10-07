@@ -56,8 +56,9 @@ namespace TransportManagmentSystemAPI.Controllers
 
         // DELETE api/<TrainController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(string id , Train train)
         {
+            return Ok(trainScheduleManagementService.cancellingTrain(id,train));
         }
     }
 }

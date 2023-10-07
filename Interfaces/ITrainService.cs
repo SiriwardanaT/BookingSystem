@@ -10,7 +10,7 @@ namespace TransportManagmentSystemAPI.Interfaces
     {
         Train CreateTrainWithSchedule(Train train);
         List<Train> getAllActiveTrainswithSchedules();
-        string cancellingTrain(Train train);
+        string cancellingTrain(string id , Train train);
 
         Train AddNewScheduleForExisitingTrain(string trainId, Schedule schedule);
 

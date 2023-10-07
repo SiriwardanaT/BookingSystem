@@ -12,5 +12,7 @@ namespace TransportManagmentSystemAPI.DBconfig
         public string TrainScheam { get; set; }
         public string ReservationScheam { get; set; }
         public string ScheduleScheam { get; set; }
+
+
     }
 }

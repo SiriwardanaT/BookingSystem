@@ -10,6 +10,7 @@ namespace TransportManagmentSystemAPI.Interfaces
     {
         Dictionary<int, string> CreateReservation (Reservation reservation);
         List<Reservation> DisplayAllReservation(string travallerId);
+        Dictionary<int, string> CancelledReservation(string id, Reservation reservation);
 
     }
 }

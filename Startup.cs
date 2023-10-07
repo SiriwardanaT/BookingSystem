@@ -29,6 +29,7 @@ namespace TransportManagmentSystemAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.Configure<DatabaseSettings>(Configuration.GetSection(nameof(DatabaseSettings)));
             services.Configure<Scheama>(Configuration.GetSection(nameof(Scheama)));
             services.AddSingleton<IDatabaseSettings>(x => x.GetRequiredService<IOptions<DatabaseSettings>>().Value);
@@ -36,6 +37,17 @@ namespace TransportManagmentSystemAPI
             services.AddSingleton<TravallerProfileService>();
             services.AddSingleton<TrainScheduleManagementService>();
             services.AddSingleton<ReservationService>();
+            services.AddSingleton<LoginService>();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("*")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +63,8 @@ namespace TransportManagmentSystemAPI
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
